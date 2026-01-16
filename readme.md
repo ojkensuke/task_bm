@@ -2,17 +2,17 @@
 ブックマークアプリ
 
 ## ②課題内容（どんな作品か）
-- ブックマーク/CRUD
+- ブックマーク/CRUD・ログイン・ユーザー認証
 
 ## ③アプリのデプロイURL
-https://wheatmouse45.sakura.ne.jp/task_bm_ud/index.php
+https://wheatmouse45.sakura.ne.jp/task_bm_ud2/login.php
 
 ## ④アプリのログイン用IDまたはPassword（ある場合）
-- ID: 〇〇〇〇〇〇〇〇
-- PW: 〇〇〇〇〇〇〇〇
+- ID: test1
+- PW: test1
 
 ## ⑤工夫した点・こだわった点
-- 登録・削除機能の実装・デプロイ
+- ログイン・ユーザー認証機能の実装・デプロイ
 
 ## ⑥難しかった点・次回トライしたいこと（又は機能）
 - より複雑な機能の実装

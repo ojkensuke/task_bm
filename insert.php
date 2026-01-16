@@ -1,10 +1,12 @@
 <?php
-
+  
+  session_start();
+  require_once('config.php'); 
+  require_once('funcs.php');  
+  sschk();
   $name = $_POST['name'];
   $url = $_POST['url'];
   $comment = $_POST['comment'];
-
-  require_once('config.php');   
 
 try {
   //Password:MAMP='root',XAMPP=''

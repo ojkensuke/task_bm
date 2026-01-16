@@ -1,31 +1,27 @@
-    <?php
+<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-    ini_set('display_errors', 1);
+session_start();
+require_once(__DIR__ . '/funcs.php');
+sschk(); // ログインチェック
 
-    // DB接続
-    try {
-        $pdo = new PDO(
-            'mysql:dbname=wheatmouse45_bm;charset=utf8;host=mysql3112.db.sakura.ne.jp',
-            'wheatmouse45_bm',
-            'happy-3939'
-        );
-    } catch (PDOException $e) {
-        exit('DB_CONNECT:' . $e->getMessage());
-    }
+// DB接続（★ここが重要）
+$pdo = db_conn();
 
-    // データ取得
-    $sql = "SELECT * FROM gs_bm_table ORDER BY datetime DESC";
-    $stmt = $pdo->prepare($sql);
-    $status = $stmt->execute();
+// データ取得
+$sql = "SELECT * FROM gs_bm_table";
+$stmt = $pdo->prepare($sql);
+$status = $stmt->execute();
 
-    if ($status == false) {
-        $error = $stmt->errorInfo();
-        exit("SQL_ERROR:" . $error[2]);
-    }
+if ($status === false) {
+    $error = $stmt->errorInfo();
+    exit("SQL_ERROR:" . $error[2]);
+}
 
-    // データを配列で取得
-    $values = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    ?>
+$values = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 
     <!DOCTYPE html>
     <html lang="en">
@@ -57,11 +53,7 @@
                 <tr>
                     <td><?= htmlspecialchars($v['id']) ?></td>
                     <td><?= htmlspecialchars($v['name']) ?></td>
-                    <td>
-                        <a href="<?= htmlspecialchars($v['url']) ?>" target="blank">
-                            <?= htmlspecialchars($v['url']) ?></a>
-                    </td>
-
+                    <td><?= htmlspecialchars($v['url']) ?></td>
                     <td><?= htmlspecialchars($v['comment']) ?></td>
                     <td><?= htmlspecialchars($v['datetime']) ?></td>
                     <td>
@@ -79,7 +71,9 @@
         <br>
         <a href="index.php">登録画面に戻る</a>
 
-
+<?php if($_SESSION["kanri_flg"] == 1){ ?>
+  <a href="user_select.php">ユーザー管理</a>
+<?php } ?>
 
     </body>
 

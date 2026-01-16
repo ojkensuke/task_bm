@@ -1,3 +1,11 @@
+<?php
+session_start();
+require_once('config.php');
+require_once('funcs.php');
+sschk();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

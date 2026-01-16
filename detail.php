@@ -2,6 +2,9 @@
 
 $id = $_GET['id'];
 require_once('config.php');
+require_once('funcs.php');
+session_start();
+sschk(); 
 
 $pdo = new PDO(
   'mysql:dbname='.DB_NAME.';charset=utf8;host='.DB_HOST,

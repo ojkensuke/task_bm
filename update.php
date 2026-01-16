@@ -1,10 +1,14 @@
 <?php
+
+require_once('config.php');
+require_once('funcs.php');
+session_start();
+sschk(); 
 $id = $_POST['id'];
 $name = $_POST['name'];
 $url = $_POST['url'];
 $comment = $_POST['comment'];
 
-require_once('config.php');
 $pdo = new PDO(
   'mysql:dbname='.DB_NAME.';charset=utf8;host='.DB_HOST,
   DB_USER,
